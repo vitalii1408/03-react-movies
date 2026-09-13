@@ -1,4 +1,4 @@
-import axios, { type AxiosResponse } from 'axios';
+import axios from 'axios';
 import type { Movie } from '../types/movie';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -12,7 +12,7 @@ interface TmdbSearchResponse {
 }
 
 export const fetchMovies = async (query: string): Promise<Movie[]> => {
-  const response: AxiosResponse<TmdbSearchResponse> = await axios.get(
+  const response = await axios.get<TmdbSearchResponse>(
     `${BASE_URL}/search/movie`,
     {
       params: {
